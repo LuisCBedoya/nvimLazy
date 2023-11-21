@@ -137,18 +137,18 @@ return {
     })
 
     -- language server for java
-    -- require('lspconfig').jdtls.setup({
-    --   capabilities = capabilities,
-    --   on_attach = function(client)
-    --     client.server_capabilities.document_formatting = false
-    --   end,
-    --     settings = {
-    --       java = {
-    --         format = {
-    --           settings = { url = '/path/to/local/settings.xml' },
-    --         },
-    --       },
-    --     },
-    -- })
+    require('lspconfig').jdtls.setup({
+      capabilities = capabilities,
+      on_attach = function(client)
+        client.server_capabilities.document_formatting = false
+      end,
+      settings = {
+        java = {
+          format = {
+            settings = { url = '/path/to/local/settings.xml' },
+          },
+        },
+      },
+    })
   end,
 }

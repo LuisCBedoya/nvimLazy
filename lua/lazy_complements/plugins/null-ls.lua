@@ -6,7 +6,9 @@ return {
     local lSsources = {
       null_ls.builtins.formatting.prettier.with({
         env = {
-          PRETTIERD_DEFAULT_CONFIG = vim.fn.expand('/home/luc/.config/nvim/formatter-config/.prettierrc.json'),
+          PRETTIERD_DEFAULT_CONFIG = vim.fn.expand(
+            '/home/luc/.config/nvim/lua/lazy_complements/formatters/.prettierrc.json'
+          ),
         },
       }),
       null_ls.builtins.formatting.stylua.with({
@@ -15,12 +17,12 @@ return {
           vim.fn.expand('/home/luc/.config/nvim/lua/lazy_complements/formatters/.stylua.toml'),
         },
       }),
-      -- null_ls.builtins.formatting.black.with({
-      --   filetypes = {
-      --     'python',
-      --   },
-      --   args = { '--stdin-filename', '$FILENAME', '--quiet', '-' },
-      -- }),
+      null_ls.builtins.formatting.black.with({
+        filetypes = {
+          'python',
+        },
+        args = { '--stdin-filename', '$FILENAME', '--quiet', '-' },
+      }),
     }
 
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
@@ -29,13 +31,13 @@ return {
       sources = lSsources,
       on_attach = function(client, bufnr)
         if client.supports_method('textDocument/formatting') then
-          vim.cmd([[
-                augroup document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                augroup END
-              ]])
+          -- vim.cmd([[
+          --       augroup document_highlight
+          --       autocmd! * <buffer>
+          --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+          --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+          --       augroup END
+          --     ]])
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd('BufWritePre', {
             group = augroup,
