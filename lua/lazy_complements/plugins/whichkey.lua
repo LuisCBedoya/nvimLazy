@@ -59,6 +59,7 @@ return {
         group = '+', -- symbol prepended to a group
       },
       ignore_missing = true,
+      triggers = { '<leader>' },
     }
 
     local opts = {

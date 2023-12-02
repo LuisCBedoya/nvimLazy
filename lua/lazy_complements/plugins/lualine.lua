@@ -10,7 +10,11 @@ return {
         statusline = {},
         winbar = {},
       },
-      ignore_focus = {},
+      ignore_focus = {
+        'neo-tree',
+        'NvimTree',
+        'fugitive',
+      },
       always_divide_middle = true,
       globalstatus = false,
       refresh = {

@@ -8,9 +8,8 @@ local M = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',
     'hrsh7th/vim-vsnip',
-    -- 'hrsh7th/vim-vsnip-integ',
+    'hrsh7th/vim-vsnip-integ',
     'onsails/lspkind.nvim',
-    'L3MON4D3/LuaSnip',
   },
 }
 
