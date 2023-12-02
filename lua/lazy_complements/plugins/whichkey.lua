@@ -16,8 +16,8 @@ return {
       Q = { ':wq<cr>', 'Save & Quit' },
       w = { ':w<cr>', 'Save' },
       x = { ':bdelete<cr>', 'Close' },
-      f = { ':Telescope find_files<cr>', 'Telescope Find Files' },
-      r = { ':Telescope live_grep<cr>', 'Telescope Live Grep' },
+      -- f = { ':Telescope find_files<cr>', 'Telescope Find Files' },
+      -- r = { ':Telescope live_grep<cr>', 'Telescope Live Grep' },
       t = { ':ToggleTerm<cr>', 'Split Below' },
       l = {
         name = 'LSP',
@@ -37,6 +37,17 @@ return {
         e = { '<cmd>Lspsaga show_line_diagnostics<cr>', 'Show Line Diagnostics' },
         n = { '<cmd>Lspsaga diagnostic_jump_next<cr>', 'Go To Next Diagnostic' },
         N = { '<cmd>Lspsaga diagnostic_jump_prev<cr>', 'Go To Previous Diagnostic' },
+      },
+      r = {
+        name = 'Run',
+        s = {
+          '<cmd>autocmd bufwritepost [^_]*.sass,[^_]*.scss  silent exec "!sass %:p %:r.css"<CR>',
+          'Auto Compile Sass',
+        },
+        r = { '<cmd>RunCode<CR>', 'Run Code' },
+        f = { '<cmd>RunFile<CR>', 'Run File' },
+        p = { '<cmd>RunProject<CR>', 'Run Project' },
+        -- g = { '<cmd>ToggleTerm size=70 direction=float<cr>clear<cr>gradle run<cr>' .. trn, 'Run Gradle' },
       },
     }
 
