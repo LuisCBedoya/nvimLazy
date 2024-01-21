@@ -139,15 +139,25 @@ return {
     require('lspconfig').jdtls.setup({
       capabilities = capabilities,
       on_attach = function(client)
+        if client.name == 'jdt.ls' then
+          require('jdtls.dap').setup_dap_main_class_configs()
+          require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+          vim.lsp.codelens.refresh()
+        end
         client.server_capabilities.document_formatting = false
       end,
-      settings = {
-        java = {
-          format = {
-            settings = { url = '/path/to/local/settings.xml' },
-          },
-        },
-      },
     })
+
+    -- local M = {}
+    -- M.on_attach = function(client)
+    --   if client.name == 'jdt.ls' then
+    --     if JAVA_DAP_ACTIVE then
+    --       require('jdtls.dap').setup_dap_main_class_configs()
+    --       require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    --     end
+    --   end
+    -- end
+
+    -- return M
   end,
 }

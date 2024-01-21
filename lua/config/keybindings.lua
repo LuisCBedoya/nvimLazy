@@ -35,3 +35,4 @@ map('n', '<A-k>', '<C-W>k', { noremap = true, silent = false })
 
 map('n', '<A-h>', '<C-W>h', { noremap = true, silent = false })
 map('n', '<A-l>', '<C-W>l', { noremap = true, silent = false })
+

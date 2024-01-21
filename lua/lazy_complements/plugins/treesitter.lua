@@ -9,6 +9,10 @@ return {
   opts = {
     ensure_installed = {
       'bash',
+      'vim',
+      'lua',
+      'c',
+      'vimdoc',
       'css',
       'html',
       'javascript',

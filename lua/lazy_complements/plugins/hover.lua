@@ -13,6 +13,7 @@ local M = {
     require('hover').setup(opts)
     vim.keymap.set('n', '<leader>k', require('hover').hover, { desc = 'hover.nvim' })
     vim.keymap.set('n', '<leader>K', require('hover').hover_select, { desc = 'hover.nvim (select)' })
+
   end,
   event = 'VeryLazy',
 }
