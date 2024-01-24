@@ -9,18 +9,20 @@ M.server_capabilities = function()
   end
 
   vim.ui.select(vim.tbl_keys(active_client_map), {
-    prompt = "Select client:",
+    prompt = 'Select client:',
     format_item = function(item)
-      return "capabilites for: " .. item
+      return 'capabilites for: ' .. item
     end,
   }, function(choice)
     -- print(active_client_map[choice])
-    print(vim.inspect(vim.lsp.get_active_clients()[active_client_map[choice]].server_capabilities.executeCommandProvider))
+    print(
+      vim.inspect(vim.lsp.get_active_clients()[active_client_map[choice]].server_capabilities.executeCommandProvider)
+    )
     vim.pretty_print(vim.lsp.get_active_clients()[active_client_map[choice]].server_capabilities)
   end)
 end
 
-require("lsp.mason")
-require("lsp.handlers").setup()
-require("lsp.null-ls")
-require("lsp.cmp")
+require('lsp.mason')
+require('lsp.handlers').setup()
+require('lsp.null-ls')
+require('lsp.cmp')

@@ -1,3 +1,4 @@
+local icons = require('icons')
 require('lualine').setup({
   options = {
     icons_enabled = true,
@@ -23,7 +24,19 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_b = {
+      'branch',
+      'diff',
+      {
+        'diagnostics',
+        symbols = {
+          error = icons.diagnostics.Error,
+          warn = icons.diagnostics.Warning,
+          info = icons.diagnostics.Information,
+          hint = icons.diagnostics.Hint,
+        },
+      },
+    },
     lualine_c = { 'filename' },
     lualine_x = { 'filetype' },
     lualine_y = { 'progress' },
@@ -37,5 +50,6 @@ require('lualine').setup({
     lualine_y = {},
     lualine_z = {},
   },
+
   winbar = {},
 })

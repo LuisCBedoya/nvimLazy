@@ -13,35 +13,41 @@ vim.opt.rtp:prepend(lazypath)
 plugins = {
   { 'nvim-lua/plenary.nvim' },
   { 'kyazdani42/nvim-web-devicons' },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
 
   -- **** THEMES *****************
+  {
+    'EdenEast/nightfox.nvim',
+    name = 'nightfox',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('plugins.nightfox')
+    end,
+  },
   -- {
-  --   'EdenEast/nightfox.nvim',
-  --   name = 'nightfox',
+  --   'marko-cerovac/material.nvim',
+  --   name = 'material',
   --   lazy = false,
   --   priority = 1000,
   --   config = function()
-  --     require('plugins.nightfox')
+  --     require('plugins.material')
   --   end,
   -- },
-  {
-    'marko-cerovac/material.nvim',
-    name = 'material',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('plugins.material')
-    end,
-  },
-  {
-    'ellisonleao/gruvbox.nvim',
-    name = 'gruvbox',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('plugins.gruvbox')
-    end,
-  },
+  -- {
+  --   'ellisonleao/gruvbox.nvim',
+  --   name = 'gruvbox',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('plugins.gruvbox')
+  --   end,
+  -- },
   -- {
   --   'catppuccin/nvim',
   --   name = 'catppuccin',
@@ -126,7 +132,7 @@ plugins = {
       require('plugins.barbecue')
     end,
   },
-  -- **** BUFFERLINE *****************
+  -- **** CODERRUNER *****************
   {
     'CRAG666/code_runner.nvim',
     config = function()
@@ -169,19 +175,21 @@ plugins = {
     end,
   },
   -- **** BUFDELETE *****************
-  {
-    'famiu/bufdelete.nvim',
-    event = 'VeryLazy',
-    keys = {
-      { '<leader>x', '<cmd>Bdelete!<CR>' },
-    },
-  },
+  -- {
+  --   'famiu/bufdelete.nvim',
+  --   event = 'VeryLazy',
+  --   keys = {
+  --     { '<leader>x', '<cmd>Bdelete!<CR>' },
+  --   },
+  -- },
+  --
   --{
   --	"goolord/alpha-nvim",
   --	config = function()
   --		require("plugins.alpha")
   --	end,
   --},
+  --
 
   -- **** TREESITTER *****************
   {

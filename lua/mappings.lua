@@ -8,7 +8,8 @@ vim.g.maplocalleader = ' '
 
 -- -- ***** SAVE AND CLOSE
 keymap('n', '<leader>w', '<cmd>w<CR>', opts) -- save buffer
-keymap('n', '<leader>q', '<cmd>q<CR>', fopts) -- close current window
+keymap('n', '<leader>q', '<cmd>q<CR>', fopts) -- quit  window
+keymap('n', '<leader>x', '<cmd>bd<CR>', fopts) -- close current window
 keymap('n', '<leader>Q', '<cmd>w<CR><cmd>q<CR>', opts) -- save and close window
 
 -- -- *** INDENT
