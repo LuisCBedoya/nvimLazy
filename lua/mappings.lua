@@ -40,6 +40,7 @@ keymap({ 'n', 't' }, '<C-Right>', '<C-w>l', opts)
 keymap('n', '<leader>vs', ':vsplit ')
 keymap('n', '<leader>ds', ':split ')
 
+keymap('n', '<C-Space>', ':')
 -- -- *** SEARCH
 keymap('n', '<C-s>', ':/')
 
@@ -48,8 +49,10 @@ keymap('n', '<C-s>', ':/')
 
 -- -- *** OTHERS
 keymap('n', 'v', 'V', opts)
-keymap('n', '<C-Space>', ':')
 keymap('n', 't', '%', opts)
 keymap('v', 't', '%', opts)
-keymap('n', 'm', '#', opts)
-keymap('v', 'm', '#', opts)
+-- keymap('n', 'm', '#', opts)
+-- keymap('v', 'm', '#', opts)
+
+-- keymap('n', '<leader>tn', '<cmd> tabnew<CR>', opts)
+-- keymap('n', '<leader>ts', ':tab split ', opts)

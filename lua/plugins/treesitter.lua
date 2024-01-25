@@ -7,14 +7,17 @@ require('nvim-treesitter.configs').setup({
     'json',
     'bash',
     'http',
+    'php',
     'html',
     'css',
     'c',
     'java',
     'vimdoc',
     'vim',
+    'markdown',
   },
 
+  auto_install = true,
   highlight = {
     enable = true, -- false will disable the whole extension
     additional_vim_regex_highlighting = true,

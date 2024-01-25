@@ -3,7 +3,7 @@ local set = vim.opt --short vim.opt in set variable
 --  user options {
 set.cursorline = true
 set.number = true -- enable line number
-set.relativenumber = false -- enable line number
+set.relativenumber = true -- enable line number
 set.confirm = true -- confirm on exit
 set.smartindent = true -- autoindent new lines
 set.ignorecase = true
@@ -13,7 +13,7 @@ set.updatetime = 300
 set.splitright = true -- new vertical splits are created at right
 set.splitbelow = true -- new horizontal splits are created bellow
 set.numberwidth = 3 -- set 3 characters to number column
-set.cmdheight = 2
+set.cmdheight = 1
 set.cc = ''
 set.showmode = false
 

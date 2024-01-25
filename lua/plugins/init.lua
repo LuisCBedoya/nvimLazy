@@ -66,29 +66,105 @@ plugins = {
   --     require('plugins.onedark')
   --   end,
   -- },
+  -- **** alpha *****************
+  {
+    'goolord/alpha-nvim',
+    config = function()
+      require('plugins.alpha')
+    end,
+  },
   -- **** INDENT *****************
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
-    opts = {},
     config = function()
       require('plugins.indentline')
     end,
   },
+  -- **** ZENMODE *****************
+  {
+    'folke/zen-mode.nvim',
+    config = function()
+      require('plugins.zenmode')
+    end,
+    keys = {
+      { '<leader>azm', desc = 'Active Zen Mode' },
+      { '<leader>z', ':ZenMode<cr>', desc = 'Zen Mode' },
+    },
+  },
+  -- **** DATABASE *****************
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      'tpope/vim-dadbod',
+      'kristijanhusak/vim-dadbod-completion',
+      'tpope/vim-dotenv',
+    },
+    keys = {
+      { '<leader>db', ':tab DBUI<cr>', desc = 'Open Database client' },
+    },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_show_database_icon = 1
+      vim.g.db_ui_force_echo_notifications = 1
+      vim.g.db_ui_win_position = 'left'
+      vim.g.db_ui_winwidth = 80
+
+      vim.g.db_ui_table_helpers = {
+        mysql = {
+          Count = 'select count(1) from {optional_schema}{table}',
+          Explain = 'EXPLAIN {last_query}',
+        },
+        sqlite = {
+          Describe = 'PRAGMA table_info({table})',
+        },
+      }
+    end,
+  },
+  -- **** twilight *****************
+  {
+    'folke/twilight.nvim',
+    cmd = { 'Twilight' },
+    config = true,
+  },
   -- **** COLORIZER *****************
   {
     'norcalli/nvim-colorizer.lua',
+    event = 'VeryLazy',
     config = function()
       require('colorizer').setup()
     end,
   },
-  -- **** MINIANIMATE *****************
+  -- **** CMDLINE *****************
   {
-    'echasnovski/mini.animate',
+    'gelguy/wilder.nvim"',
+    enabled = false,
+  },
+  {
+    'folke/noice.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+    event = 'BufWinEnter',
     config = function()
-      require('mini.animate').setup()
+      require('plugins.noice')
     end,
   },
+  -- **** INPATIENT *****************
+  {
+    'lewis6991/impatient.nvim',
+    event = 'BufWinEnter',
+    config = function()
+      require('impatient').enable_profile()
+    end,
+  },
+  -- **** MINIANIMATE *****************
+  -- {
+  --   'echasnovski/mini.animate',
+  --   config = function()
+  --     require('mini.animate').setup()
+  --   end,
+  -- },
   -- **** LUALINE *****************
   {
     'nvim-lualine/lualine.nvim',
@@ -139,7 +215,7 @@ plugins = {
       require('plugins.coderrunner')
     end,
     keys = {
-      { '<leader>acr', desc = 'Activar coderrunner' },
+      { '<leader>acr', desc = 'Active coderrunner' },
       { '<leader>rc', '<cmd>RunCode<CR>', desc = 'Run Code' },
       { '<leader>rf', '<cmd>RunCode<CR>', desc = 'Run file' },
       { '<leader>rp', '<cmd>RunCode<CR>', desc = 'Run project' },
@@ -156,7 +232,7 @@ plugins = {
     lazy = false,
     keys = {
       { '<Tab>', '<cmd>BufferLineCycleNext<CR>' },
-      { '<S-Tab>', '<cmd>BufferLineCyclePrev<CR>' },
+      -- { '<S-Tab>', '<cmd>BufferLineCyclePrev<CR>' },
       { '<leader>bp', '<cmd>BufferLinePick<CR>' },
       { '<leader>bpc', '<cmd>BufferLinePickClose<CR>' },
       { '<C-m><C-n>', '<cmd> BufferLineMoveNext<CR>' },
@@ -167,13 +243,13 @@ plugins = {
     end,
   },
   -- **** SCOPE *****************
-  {
-    'tiagovla/scope.nvim',
-    config = function()
-      -- init.lua
-      require('scope').setup()
-    end,
-  },
+  -- {
+  --   'tiagovla/scope.nvim',
+  --   config = function()
+  --     -- init.lua
+  --     require('scope').setup()
+  --   end,
+  -- },
   -- **** BUFDELETE *****************
   -- {
   --   'famiu/bufdelete.nvim',
@@ -227,7 +303,7 @@ plugins = {
       { '<leader>fb', '<cmd>Telescope buffers<cr>' },
       { '<leader>fh', '<cmd>Telescope help_tags<cr>' },
       { '<leader>fr', '<cmd>Telescope oldfiles<cr>' },
-      -- { "<leader>fp", "<cmd>Telescope projects<cr>" },
+      { '<leader>fp', '<cmd>Telescope projects<cr>' },
       { '<leader>fk', '<cmd>Telescope keymaps<cr>' },
     },
     config = function()
@@ -242,13 +318,14 @@ plugins = {
       require('plugins.autopairs')
     end,
   },
-  -- {
-  -- 	"ahmedkhalf/project.nvim",
-  -- 	lazy = false,
-  -- 	config = function()
-  -- 		require("plugins.project")
-  -- 	end,
-  -- },
+  -- **** PROJECY ******************
+  {
+    'ahmedkhalf/project.nvim',
+    lazy = false,
+    config = function()
+      require('plugins.project')
+    end,
+  },
   --{
   --	"uga-rosa/ccc.nvim",
   --	lazy = false,
@@ -280,7 +357,7 @@ plugins = {
   -- **** PANTRAN *****************
   {
     'potamides/pantran.nvim',
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
     keys = {
       { '<leader>apn', desc = 'Active pantran (Motores de traducción automática)' },
       { '<C-t>', '<cmd>Pantran<CR>' },
@@ -296,6 +373,7 @@ plugins = {
     event = 'VeryLazy',
     ft = 'http',
     keys = {
+      { '<leader>ar', desc = 'Active Rest' },
       { '<leader>r', '<Plug>RestNvim' },
     },
     config = function()
@@ -310,6 +388,17 @@ plugins = {
     },
     config = function()
       require('plugins.nvimtree')
+    end,
+  },
+  -- **** GLOW (markdown) *****************
+  {
+    'ellisonleao/glow.nvim',
+    cmd = 'Glow',
+    config = function()
+      require('glow').setup({
+        style = 'dark',
+        width = 800,
+      })
     end,
   },
 
@@ -342,7 +431,6 @@ plugins = {
     'mfussenegger/nvim-dap',
     event = 'VeryLazy',
     keys = {
-
       { '<leader>dt', '<cmd>DapToggleBreakpoint<cr>' },
       { '<leader>dc', '<cmd>DapContinue<cr>' },
       { '<leader>di', '<cmd>DapStepInto<cr>' },

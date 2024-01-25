@@ -17,15 +17,12 @@ null_ls.setup({
       },
     }),
     formatting.black.with({ -- html,css,js, etc
-      filetypes = {
-        'python',
-      },
     }),
-    formatting.google_java_format.with({ -- html,css,js, etc
-      filetypes = {
-        'java',
-      },
+    formatting.google_java_format,
+    formatting.phpcsfixer.with({
+      filetypes = { 'php' },
     }),
+    formatting.jq,
 
     -- linters / diagnostics binaries
     -- diagnostics.tidy, -- XML

@@ -1,22 +1,28 @@
+-- **** LSP
 local servers = {
-  'pyright',
-  'tsserver',
-  'emmet_ls',
-  'lua_ls',
-  'cssls',
-  'jdtls',
+  'pyright', --python
+  'tsserver', -- js
+  'emmet_ls', -- html
+  'lua_ls', -- lua
+  'cssls', --css
+  'jdtls', --java
+  'marksman', -- markdown
+  'intelephense', --php
 }
-
+-- **** DEBUGGERS
 local debuggers = {
-  '',
+  'debugpy', -- python
+  'java-debug-adapter', -- java
+  'java-test', -- java
 }
-
+-- **** FORMATTERS
 local null_ls = {
-  'black',
-  'stylua',
-  'prettier',
-  'google_java_format',
-  'jq',
+  'black', -- python
+  'stylua', -- lua
+  'prettier', -- html, css , js, etc
+  'google_java_format', -- java
+  'jq', -- json
+  'phpcsfixer', -- php
 }
 
 local settings = {

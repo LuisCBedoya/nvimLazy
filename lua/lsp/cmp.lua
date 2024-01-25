@@ -1,6 +1,11 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
+local cmp_cmdlinnes_mapping = {
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+  ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+}
 
 local check_backspace = function()
   local col = vim.fn.col('.') - 1
@@ -58,6 +63,41 @@ cmp.setup({
       's',
     }),
   },
+
+  -- Use buffer source for `/`.
+  cmp.setup.cmdline('/', {
+    preselect = 'none',
+    completion = {
+      completeopt = 'menu,preview,menuone,noselect',
+    },
+    mapping = cmp_cmdlinnes_mapping,
+    sources = {
+      { name = 'buffer' },
+    },
+    experimental = {
+      ghost_text = true,
+      native_menu = false,
+    },
+  }),
+
+  -- Use cmdline & path source for ':'.
+  cmp.setup.cmdline(':', {
+    preselect = 'none',
+    completion = {
+      completeopt = 'menu,preview,menuone,noselect',
+    },
+    mapping = cmp_cmdlinnes_mapping,
+    sources = cmp.config.sources({
+      { name = 'path' },
+    }, {
+      { name = 'cmdline' },
+    }),
+    experimental = {
+      ghost_text = true,
+      native_menu = false,
+    },
+  }),
+
   formatting = {
     fields = { 'abbr', 'kind', 'menu' },
     format = function(entry, vim_item)
